@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    
+    <div class="container">
+        <div class="timer">
+            <h1>00:<span id="time">15</span></h1>
+        </div>
+        <div class="main">
+            <div class="header">
+                <h1>Question <span class="current" id="count">1</span><span class="outOf">/05</span></h1>
+            </div>
+            
+            <div class="question">
+                <p id="question">what is your name?</p>
+            </div>
+            
+            <div class="score_board" id="score_board">
+                <h1>Score : <span class="score">00</span></h1>
+                <button onclick="playAgain()">Play Again</button>
+            </div>
+            
+            <div class="options">
+                <ul>
+                    <li>
+                        <input type="radio" id="a" name="answer" />
+                        <label id="a_text" for="a">Option A</label>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <input type="radio" id="b" name="answer" />
+                        <label id="b_text" for="b">Option B</label>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <input type="radio" id="c" name="answer" />
+                        <label id="c_text" for="c">Option C</label>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <input type="radio" id="d" name="answer" />
+                        <label id="d_text" for="d">Option D</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="next">
+            <button id="next">NEXT</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
