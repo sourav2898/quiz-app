@@ -36,7 +36,7 @@ const question_book = [
     }
 ];
 
-const answer_book = ['Stack Segment','math.h','itoa','__C++__','x'];
+const answer_book = ['b','a','a','d','c'];
 
 const display_time = document.getElementById("time");
 const question_number = document.getElementById("count"); 
@@ -53,22 +53,23 @@ const ele = document.getElementsByName("answer");
 
 let count = 15;
 let current_question = 0;
-var score = 0;
+var score = 0;var t = 0;
 quiz();
 if(current_question < question_book.length) setInterval(timer,1000);
 
 function timer(){
-    if(current_question<=question_book.length && count>=0){
+    if(current_question <= question_book.length && count>=0){
         display_time.innerHTML = formatTime(count);
         count -=1;
     }
-    else if(current_question<question_book.length){
+    else if(current_question < question_book.length){
         quiz();
     }
     else{
+        calScore();
         count = 0;
         score_board.style.display = "block";
-        score_display.innerHTML = score;
+        score_display.innerHTML = formatTime(score);
     }
 }
 
@@ -85,32 +86,42 @@ function quiz(){
     b_text.innerHTML = question_book[current_question].b;
     c_text.innerHTML = question_book[current_question].c;
     d_text.innerHTML = question_book[current_question].d;
+    
+    calScore();
+    
     if(current_question <= question_book.length){
         current_question+=1;
     } 
-              
-    for(i = 0; i < ele.length; i++) { 
-        if(ele[i].checked) {
-            if(ele[i].value == answer_book[current_question]) score+=1;
-        }
-    } 
-    
 }
 
 next.addEventListener("click", ()=>{
     if(current_question < question_book.length) quiz();
     else {
+        calScore();
         count = 0;
         score_board.style.display = "block";
-        score_display.innerHTML = score;
+        score_display.innerHTML = formatTime(score);
     }
 }); 
+
+function calScore(){
+    if(t <= question_book.length){
+        for(i = 0; i < ele.length; i++) { 
+            if(ele[i].checked) {
+                if(ele[i].id == answer_book[current_question-1] ) score+=1;
+                console.log(score);
+            }
+        }
+        t+=1;
+    }
+}
 
 function playAgain(){
     count = 15;
     score_board.style.display = "none";
     current_question = 0;
     score = 0;
+    t=0;
     quiz();
 }
 
